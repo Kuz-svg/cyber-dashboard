@@ -4,7 +4,11 @@ print("==============================\n       CYBER DASHBOARD\n=================
 
 domain = input("Enter target: ")
 
-ip = socket.gethostbyname(domain)
+try:
+    ip = socket.gethostbyname(domain)
+    print("Target:", domain)
+    print("Resolved IP:", ip)
 
-print("Target:", domain)
-print("Resolved IP:", ip)
+except socket.gaierror:
+    print("Could not resolve domain")
+
