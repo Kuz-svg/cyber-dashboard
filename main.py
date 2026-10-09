@@ -5,10 +5,13 @@ print("==============================\n       CYBER DASHBOARD\n=================
 domain = input("Enter target: ")
 
 try:
-    ip = socket.gethostbyname(domain)
-    print("Target:", domain)
-    print("Resolved IP:", ip)
+    result = socket.gethostbyname_ex(domain)
+    ips = result[2]
+    print("Resolved IP:")
+    for ip in ips:
+        print(ip)
+    print(f"Total IPv4 addresses: {len(ips)}")
 
 except socket.gaierror:
     print("Could not resolve domain")
-
+    
